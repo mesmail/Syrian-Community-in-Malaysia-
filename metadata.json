@@ -1,0 +1,7 @@
+{
+  "name": "Syrian Community in Malaysia",
+  "description": "A comprehensive platform connecting and supporting the Syrian community in Malaysia with news, services, events, and a business directory.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

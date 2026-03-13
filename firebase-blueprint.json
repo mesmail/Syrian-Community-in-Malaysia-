@@ -1,0 +1,166 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "user"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "News": {
+      "title": "News",
+      "description": "Community news and announcements",
+      "type": "object",
+      "properties": {
+        "title": { "type": "object" },
+        "content": { "type": "object" },
+        "image": { "type": "string" },
+        "category": { "type": "string" },
+        "publishedAt": { "type": "string", "format": "date-time" },
+        "authorUid": { "type": "string" }
+      },
+      "required": ["title", "content", "publishedAt"]
+    },
+    "Event": {
+      "title": "Event",
+      "description": "Community events",
+      "type": "object",
+      "properties": {
+        "title": { "type": "object" },
+        "description": { "type": "object" },
+        "date": { "type": "string", "format": "date-time" },
+        "location": { "type": "object" },
+        "image": { "type": "string" },
+        "category": { "type": "string" }
+      },
+      "required": ["title", "description", "date"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "Community services",
+      "type": "object",
+      "properties": {
+        "title": { "type": "object" },
+        "description": { "type": "object" },
+        "icon": { "type": "string" },
+        "category": { "type": "string" },
+        "details": { "type": "object" }
+      },
+      "required": ["title", "description"]
+    },
+    "Business": {
+      "title": "Business",
+      "description": "Syrian business listing",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "object" },
+        "category": { "type": "string" },
+        "location": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "images": { "type": "array", "items": { "type": "string" } },
+        "ownerUid": { "type": "string" },
+        "approved": { "type": "boolean" }
+      },
+      "required": ["name", "description", "category", "whatsapp"]
+    },
+    "ForumCategory": {
+      "title": "Forum Category",
+      "description": "Categories for the discussion board",
+      "type": "object",
+      "properties": {
+        "name": { "type": "object" },
+        "description": { "type": "object" },
+        "icon": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "ForumTopic": {
+      "title": "Forum Topic",
+      "description": "A discussion topic",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "authorUid": { "type": "string" },
+        "authorName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "replyCount": { "type": "number" }
+      },
+      "required": ["title", "content", "categoryId", "authorUid"]
+    },
+    "ForumReply": {
+      "title": "Forum Reply",
+      "description": "A reply to a forum topic",
+      "type": "object",
+      "properties": {
+        "topicId": { "type": "string" },
+        "content": { "type": "string" },
+        "authorUid": { "type": "string" },
+        "authorName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["topicId", "content", "authorUid"]
+    },
+    "EventRegistration": {
+      "title": "Event Registration",
+      "description": "User registration for an event",
+      "type": "object",
+      "properties": {
+        "eventId": { "type": "string" },
+        "uid": { "type": "string" },
+        "userName": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "registeredAt": { "type": "string", "format": "date-time" },
+        "language": { "type": "string" }
+      },
+      "required": ["eventId", "uid"]
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "news": {
+      "schema": "News",
+      "description": "News articles"
+    },
+    "events": {
+      "schema": "Event",
+      "description": "Community events"
+    },
+    "services": {
+      "schema": "Service",
+      "description": "Available services"
+    },
+    "businesses": {
+      "schema": "Business",
+      "description": "Business directory"
+    },
+    "forumCategories": {
+      "schema": "ForumCategory",
+      "description": "Forum categories"
+    },
+    "forumTopics": {
+      "schema": "ForumTopic",
+      "description": "Forum topics"
+    },
+    "forumReplies": {
+      "schema": "ForumReply",
+      "description": "Forum replies"
+    },
+    "eventRegistrations": {
+      "schema": "EventRegistration",
+      "description": "Event registrations"
+    }
+  }
+}
